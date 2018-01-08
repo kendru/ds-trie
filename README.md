@@ -6,6 +6,7 @@
 
 ```
 const trie = require('ds-trie');
+const assert = require('assert');
 
 const t = new Trie();
 
@@ -15,14 +16,6 @@ t.removeElement(['path', 'b'], 'other');
 
 t.addElement(['path'], 'root');
 
-assert(elementsEqual(t.collect(['path', 'b']), ['stuff', 'root']));
-
-const elementsEqual = (xs, ys) => {
-  if (xs.length !== ys.length) return false;
-  for (let i = 0; i < xs.length; x++) {
-    if (xs[i] !== ys[i]) return false;
-  }
-  return true;
-}
+assert.deepStrictEqual(t.collect(['path', 'b']), ['stuff', 'root']);
 ```
 

@@ -60,15 +60,54 @@ class Node {
      */
     collect(path) {
         if (path.length === 0) {
-            return []
+            return this.elements
         }
         const [ first, ...rest ] = path
         const nextNode = this.children[first]
         if (!nextNode) {
-            return []
+            return this.elements
         }
 
-        return [...this.elements, ...nextNode.collect(rest)]
+        return [...nextNode.collect(rest), ...this.elements]
+    }
+
+    /**
+     * Gets the trie of elements matching the prefix path
+     *
+     * @param {Array<string>} path
+     * @returns {Trie|null}
+     */
+    subTrie(path) {
+        if (path.length === 0) {
+            return this
+        }
+        const [ first, ...rest ] = path
+        const nextNode = this.children[first]
+        if (!nextNode) {
+            return null
+        }
+        return nextNode.subTrie(rest)
+    }
+
+    /**
+     * Gets all elements that have a given prefix
+     *
+     * @param {Array<string>} path
+     * @return {Array} All elements who match path as a prefix
+     */
+    search(path) {
+        const sub = this.subTrie(path)
+        return sub ? [...sub] : []
+    }
+
+    *[Symbol.iterator]() {
+        for (let element of this.elements) {
+            yield element
+        }
+
+        for (let childName in this.children) {
+            yield* this.children[childName][Symbol.iterator]()
+        }
     }
 }
 
