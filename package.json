@@ -1,0 +1,31 @@
+{
+  "name": "ds-trie",
+  "version": "1.0.0",
+  "description": "A dead-simple trie data structure",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src/ --out-dir lib",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublish": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/kendru/ds-trie.git"
+  },
+  "keywords": [
+    "trie"
+  ],
+  "author": "Andrew Meredith <andrew@lambdasoftware.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kendru/ds-trie/issues"
+  },
+  "homepage": "https://github.com/kendru/ds-trie#readme",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-es2017": "^6.24.1"
+  }
+}
