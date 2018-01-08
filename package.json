@@ -1,8 +1,8 @@
 {
   "name": "ds-trie",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A dead-simple trie data structure",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "babel src/ --out-dir lib",
     "test": "echo \"Error: no test specified\" && exit 1",

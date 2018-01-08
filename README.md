@@ -7,7 +7,7 @@
 ```
 const trie = require('ds-trie');
 
-const t = trie();
+const t = new Trie();
 
 t.addElement(['path', 'a'], 'something');
 t.addElements(['path', 'b'], ['other', 'stuff']);
