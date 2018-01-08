@@ -10,7 +10,7 @@ class Node {
 
     addElements(path, elements) {
         if (path.length === 0) {
-            this.elements = this.elements.concat(elements)
+            this.elements = [...this.elements, ...elements]
         } else {
             const [ first, ...rest ] = path
             let child = this.children[first]
@@ -50,6 +50,25 @@ class Node {
         if (nextNode.isEmpty()) {
             delete this.children[first]
         }
+    }
+
+    /**
+     * Collect all of the elements stored from the node passed down to the element at path
+     * 
+     * @param {Array<string>} path
+     * @return {Array} Collected elements
+     */
+    collect(path) {
+        if (path.length === 0) {
+            return []
+        }
+        const [ first, ...rest ] = path
+        const nextNode = this.children[first]
+        if (!nextNode) {
+            return []
+        }
+
+        return [...this.elements, ...nextNode.collect(rest)]
     }
 }
 
