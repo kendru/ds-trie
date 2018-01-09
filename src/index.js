@@ -109,6 +109,25 @@ class Node {
             yield* this.children[childName][Symbol.iterator]()
         }
     }
+
+    entriesIter(path = []) {
+        const t = this
+
+        return {
+            *[Symbol.iterator]() {
+                for (let element of t.elements) {
+                    yield [path, element]
+                }
+
+                for (let childName in t.children) {
+                    yield* t.
+                        children[childName].
+                        entriesIter(path.concat([childName]))
+                        [Symbol.iterator]()
+                }
+            }
+        };
+    }
 }
 
 module.exports = Node
