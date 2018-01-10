@@ -53,6 +53,22 @@ class Node {
     }
 
     /**
+     * Get the node at the given path
+     *
+     * @param {Array<string>} path
+     * @return {Node|null} Node at the given path. Null if node does not exist
+     */
+    walk(path) {
+        if (path.length === 0) {
+            return this
+        }
+
+        const [ first, ...rest ] = path
+        const nextNode = this.children[first]
+        return nextNode ? nextNode.walk(rest) : null
+    }
+
+    /**
      * Collect all of the elements stored from the node passed down to the element at path
      * 
      * @param {Array<string>} path
@@ -126,7 +142,7 @@ class Node {
                         [Symbol.iterator]()
                 }
             }
-        };
+        }
     }
 }
 
