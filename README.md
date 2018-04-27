@@ -5,7 +5,7 @@
 ### Usage:
 
 ```
-const trie = require('ds-trie');
+const Trie = require('ds-trie');
 const assert = require('assert');
 
 const t = new Trie();

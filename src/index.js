@@ -116,6 +116,16 @@ class Node {
         return sub ? [...sub] : []
     }
 
+    /**
+     * Determines if the trie contains a given path
+     *
+     * @param {Array<string>} path
+     * @return {boolean} True if the path, `path`, exists in the trie
+     */
+    contains(path) {
+        return this.search(path).length > 0
+    }
+
     *[Symbol.iterator]() {
         for (let element of this.elements) {
             yield element
